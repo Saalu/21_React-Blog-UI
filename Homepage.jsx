@@ -1,11 +1,9 @@
-import React from "react";
 import Header from "../../components/header/Header";
 import Posts from "../../components/posts/Posts";
 import Sidebar from "../../components/sidebar/Sidebar";
-import Single from "../single/Single";
+import "./homepage.css";
 
-import "./home.css";
-function Home() {
+export default function Homepage() {
   return (
     <>
       <Header />
@@ -16,5 +14,3 @@ function Home() {
     </>
   );
 }
-
-export default Home;
