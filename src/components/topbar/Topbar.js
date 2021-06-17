@@ -1,7 +1,9 @@
 import React from "react";
 import "./topbar.css";
+import { Link } from "react-router-dom";
 
 function Topbar() {
+  const user = false;
   return (
     <div className="top">
       <div className="topLeft">
@@ -12,17 +14,57 @@ function Topbar() {
       </div>
       <div className="topCenter">
         <ul className="topList">
-          <li className="topListItem">HOME</li>
-          <li className="topListItem">ABOUT</li>
-          <li className="topListItem">CONTACT</li>
-          <li className="topListItem">WRITE</li>
-          <li className="topListItem">LOGOUT</li>
+          <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+            <li className="topListItem">HOME</li>
+          </Link>
+          <Link
+            to="/about"
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
+            <li className="topListItem">ABOUT</li>
+          </Link>
+          <Link
+            to="/contact"
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
+            <li className="topListItem">CONTACT</li>
+          </Link>
+          <Link
+            to="/write"
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
+            <li className="topListItem">WRITE</li>
+          </Link>
+          <Link
+            to="/logout"
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
+            <li className="topListItem">{user && "LOGOUT"}</li>
+          </Link>
         </ul>
       </div>
       <div className="topRight">
-        <img src="assets/avatar.jpg" alt="" className="topImg" />
-
-        <i className="topSearchIcon fas fa-search"></i>
+        {user ? (
+          <img src="assets/avatar.jpg" alt="" className="topImg" />
+        ) : (
+          <ul className="topList">
+            <Link
+              className="link"
+              to="/login"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              <li className="topListItem">LOGIN</li>
+            </Link>
+            <Link
+              className="link"
+              to="/register"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              <li className="topListItem">REGISTER</li>
+            </Link>
+          </ul>
+        )}
+        {user && <i className="topSearchIcon fas fa-search"></i>}
       </div>
     </div>
   );
